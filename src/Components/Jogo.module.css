@@ -18,7 +18,7 @@ p{
   
   transition: background-color 100ms ease-in-out;
   /*min-width: 426.66px;*/
-  min-width: 400px;
+  /*min-width: 400px;*/
 }
 
 .jogoHeader{
