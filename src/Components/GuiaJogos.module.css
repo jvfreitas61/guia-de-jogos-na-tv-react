@@ -1,0 +1,55 @@
+.guia{
+  display: flex;
+  background-color: rgb(235, 235, 235);
+  justify-content: space-between;
+  /*box-shadow: 0px 1px 3px lightgray;
+  border: 1px solid var(--primary-color);*/
+  border-radius: 10px;
+  
+  font-size: 0.7em;
+  align-items: center;
+  max-width: 1280px;
+  margin: auto;
+}
+
+.btnVoltar{
+  fill: var(--azul-marinho);
+  background-color: rgba(0, 0, 0, 0);
+  border-radius: 10px;
+  border-style: none;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  height: 3rem;
+  width: 3rem;
+  padding: 10px;
+}
+
+.btnAvancar{
+  fill: var(--azul-marinho);
+  /*background-color: rgba(0, 0, 0, 0);*/
+  background: transparent;
+  border-radius: 10px;
+  border-style: none;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  height: 3rem;
+  width: 3rem;
+  padding: 10px;
+}
+
+.btnAvancar:hover,
+.btnVoltar:hover{
+  fill: var(--laranja);
+}
+
+.tituloGuia{
+  color: var(--azul-marinho);
+}
+
+@media (max-width: 980px){
+  .guia{
+    margin: auto 20px;
+  }
+}
