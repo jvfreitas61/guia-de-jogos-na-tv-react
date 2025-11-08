@@ -32,6 +32,21 @@ li{
   list-style: none;
 }
 
+.bgTitulo{
+  display: flex;
+  background-color: var(--laranja);
+  justify-content: space-between;
+  font-size: 0.8em;
+  align-items: center;
+  width: 100%;
+  margin: auto;
+}
+
+.titulo{
+  color: var(--azul-marinho);
+  text-transform: uppercase;
+}
+
 .container {
   max-width: 1400px;
   margin: auto;

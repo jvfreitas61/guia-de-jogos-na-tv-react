@@ -97,14 +97,16 @@ p{
 .timeMandante,
 .timeVisitante{
   display: flex;
+  
 }
 
 .logoTime{
-  
+  display: flex;
   width: 30px;
   height: 30px;
   text-align: center;
-  
+  align-items: center;
+  justify-content: center;
 }
 
 .logoTime img{
