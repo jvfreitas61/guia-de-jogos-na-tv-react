@@ -7,7 +7,7 @@ import { campeonatos } from '../database/campeonatos';
 
 const Campeonato = () => {
   const { id } = useParams();
-  const campeonatoSelecionado = campeonatos.find((c) => c.id === id);
+  const campeonatoSelecionado = campeonatos.find((c) => c._id === id);
 
   const [faseAtual, setFaseAtual] = useState(0);
   const fases = campeonatoSelecionado?.fases || [];

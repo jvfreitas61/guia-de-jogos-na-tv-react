@@ -26,7 +26,7 @@ const Home = () => {
   };
 
   // Define as datas correspondentes
-  const dataOffsets = [0, 1]; // ontem, hoje, amanhã
+  const dataOffsets = [0, 1]; // hoje, amanhã
   const dataSelecionada = getData(dataOffsets[diaAtual]);
   const dataFormatada = formatarDataBonita(dataOffsets[diaAtual]);
 
