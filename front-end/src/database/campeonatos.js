@@ -1,3 +1,3 @@
-import { campeonatos } from "../../api/api.js";
+//import { campeonatos } from "../../api/api.js";
 
-export {campeonatos};
+//export {campeonatos};

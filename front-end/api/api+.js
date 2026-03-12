@@ -13,3 +13,8 @@ export async function jogos() {
   const response = await api.get("/jogos");
   return response.data;
 }
+//const responseCampeonatos = await axios.get(`${URL}/campeonatos`);
+//const responseJogos = await axios.get(`${URL}/jogos`);
+
+//export const campeonatos = responseCampeonatos.data;
+//export const jogos = responseJogos.data;

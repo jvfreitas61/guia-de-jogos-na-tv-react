@@ -2,14 +2,27 @@ import React, { useState, useEffect } from 'react';
 import ListaJogos from '../Components/ListaJogos';
 import GuiaJogos from '../Components/GuiaJogos';
 import { useParams } from 'react-router-dom';
-import { jogos } from '../database/jogos';
-import { campeonatos } from '../database/campeonatos';
+import { getCampeonatos, getJogos } from "../../api/api";
 
 const Campeonato = () => {
   const { id } = useParams();
-  const campeonatoSelecionado = campeonatos.find((c) => c._id === id);
-
+  const [campeonatos, setCampeonatos] = useState([]);
+  const [jogos, setJogos] = useState([]);
   const [faseAtual, setFaseAtual] = useState(0);
+
+  useEffect(() => {
+    async function carregarDados() {
+      const dataCampeonatos = await getCampeonatos();
+      const dataJogos = await getJogos();
+
+      setCampeonatos(dataCampeonatos);
+      setJogos(dataJogos);
+    }
+
+    carregarDados();
+  }, []);
+
+  const campeonatoSelecionado = campeonatos.find((c) => c._id === id);
   const fases = campeonatoSelecionado?.fases || [];
 
   // Sempre que o campeonato mudar, reseta pra primeira fase

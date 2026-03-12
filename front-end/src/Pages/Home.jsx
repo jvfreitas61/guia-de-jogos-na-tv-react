@@ -1,11 +1,21 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import ListaJogos from '../Components/ListaJogos';
 import GuiaJogos from '../Components/GuiaJogos';
-import { jogos } from '../database/jogos';
+import { getJogos } from '../../api/api';
 
 const Home = () => {
   const dias = ['Hoje', 'Amanhã'];
   const [diaAtual, setDiaAtual] = useState(0);
+  const [jogos, setJogos] = useState([]);
+
+  useEffect(() => {
+    async function carregarJogos() {
+      const data = await getJogos();
+      setJogos(data);
+    }
+
+    carregarJogos();
+  }, []);
 
   // Função que retorna a data no formato dd/mm/yyyy (usado no JSON)
   const getData = (offset = 0) => {
@@ -39,7 +49,13 @@ const Home = () => {
         <h1 className="titulo">Agenda de Jogos</h1>
       </div>
       <section className="container">
-        <GuiaJogos fases={dias} faseAtual={diaAtual} setFaseAtual={setDiaAtual} tituloCustom={`${dias[diaAtual]}, ${dataFormatada}`} />
+        <GuiaJogos 
+          fases={dias} 
+          faseAtual={diaAtual} 
+          setFaseAtual={setDiaAtual} 
+          tituloCustom={`${dias[diaAtual]}, ${dataFormatada}`} 
+        />
+        
         <ListaJogos itemsArray={jogosFiltrados} type="home" />
       </section>
     </>

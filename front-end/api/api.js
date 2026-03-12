@@ -2,11 +2,12 @@ import axios from "axios";
 
 const URL = import.meta.env.VITE_API_URL;
 
-const responseCampeonatos = await axios.get(`${URL}/campeonatos`);
-const responseJogos = await axios.get(`${URL}/jogos`);
+export async function getCampeonatos() {
+  const response = await axios.get(`${URL}/campeonatos`);
+  return response.data;
+}
 
-//console.log(responseCampeonatos.data);
-//console.log(responseJogos.data);
-
-export const campeonatos = responseCampeonatos.data;
-export const jogos = responseJogos.data;
+export async function getJogos() {
+  const response = await axios.get(`${URL}/jogos`);
+  return response.data;
+}

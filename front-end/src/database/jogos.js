@@ -1,3 +1,3 @@
-import { jogos } from "../../api/api.js";
+//import { jogos } from "../../api/api.js";
 
-export {jogos};
+//export {jogos};
