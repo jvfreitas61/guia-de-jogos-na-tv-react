@@ -113,6 +113,10 @@ h1{
   display: block;
 }
 
+.active{
+  color: var(--laranja);
+}
+
 a{
   margin: 0px 10px;
   color: var(--azul-marinho);
@@ -126,3 +130,4 @@ a{
     display: block;
   }
 }*/
+

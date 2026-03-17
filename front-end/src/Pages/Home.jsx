@@ -1,21 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import ListaJogos from '../Components/ListaJogos';
 import GuiaJogos from '../Components/GuiaJogos';
-import { getJogos } from '../../api/api';
+import { DataContext } from "../context/DataContext";
 
 const Home = () => {
   const dias = ['Hoje', 'Amanhã'];
   const [diaAtual, setDiaAtual] = useState(0);
-  const [jogos, setJogos] = useState([]);
-
-  useEffect(() => {
-    async function carregarJogos() {
-      const data = await getJogos();
-      setJogos(data);
-    }
-
-    carregarJogos();
-  }, []);
+  const { jogos } = useContext(DataContext);
 
   // Função que retorna a data no formato dd/mm/yyyy (usado no JSON)
   const getData = (offset = 0) => {
@@ -41,7 +32,7 @@ const Home = () => {
   const dataFormatada = formatarDataBonita(dataOffsets[diaAtual]);
 
   // Filtra os jogos pela data selecionada
-  const jogosFiltrados = jogos.filter((jogo) => jogo.dataJogo === dataSelecionada);
+  const jogosFiltrados = jogos?.filter((jogo) => jogo.dataJogo === dataSelecionada) || [];
 
   return (
     <>

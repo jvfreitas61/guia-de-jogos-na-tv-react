@@ -1,12 +1,13 @@
 import React from "react";
+import { useContext } from "react";
 import styles from './Header.module.css'
 import { NavLink, useLocation } from "react-router-dom";
 import Menu from '../Assets/menu-burger.svg?react';
 import useMedia from "../Hooks/useMedia";
-import { getCampeonatos } from "../../api/api";
+import { DataContext } from "../context/DataContext";
 
 const Header = () => {
-  const [campeonatos, setCampeonatos] = React.useState([]);
+  const {campeonatos} = useContext(DataContext);
   const mobile = useMedia('(max-width: 980px)');
   const [mobileMenu, setMobileMenu] = React.useState(false);
   const {pathname} = useLocation();
@@ -15,13 +16,9 @@ const Header = () => {
     setMobileMenu(false);
   }, [pathname]);
 
-  React.useEffect(() => {
-  async function carregarCampeonatos() {
-    const data = await getCampeonatos();
-    setCampeonatos(data);
+  if (!campeonatos.length) {
+    return <header className={styles.header}>Carregando...</header>;
   }
-    carregarCampeonatos();
-  }, []);
 
   return (
     <>
@@ -32,11 +29,13 @@ const Header = () => {
 
     <h1>GUIA DE JOGOS NA TV</h1>    
     <nav className={`${mobile ? styles.navMobile : styles.nav} ${mobileMenu && styles.navMobileAtivo}`}>
-      <NavLink to="/" end className={`${mobile ? styles.linkMobile : styles.link}`}>Agenda de Jogos</NavLink>
-        {campeonatos.map((campeonato) => (
+      <NavLink to="/" end className={({ isActive }) =>
+  `${mobile ? styles.linkMobile : styles.link} ${isActive ? styles.active : ""}`}>Agenda de Jogos</NavLink>
+        {campeonatos?.map((campeonato) => (
           <NavLink 
             to={`/campeonato/${campeonato._id}`} 
-            className={`${mobile ? styles.linkMobile : styles.link}`} 
+            className={({ isActive }) =>
+              `${mobile ? styles.linkMobile : styles.link} ${isActive ? styles.active : ""}`} 
             key={`campeonato-${campeonato._id}`}>{campeonato.nome}
           </NavLink>
         ))}
