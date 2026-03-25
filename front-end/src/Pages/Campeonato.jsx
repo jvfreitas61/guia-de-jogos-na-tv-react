@@ -3,12 +3,13 @@ import ListaJogos from '../Components/ListaJogos';
 import GuiaJogos from '../Components/GuiaJogos';
 import { useParams } from 'react-router-dom';
 import { DataContext } from '../context/DataContext';
+import { getJogosPorFase } from '../../api/api';
 
 const Campeonato = () => {
   const { id } = useParams();
-  const { campeonatos, jogos } = useContext(DataContext);
+  const { campeonatos } = useContext(DataContext);
   const [faseAtual, setFaseAtual] = useState(0);
-
+  const [jogosCampeonato, setJogosCampeonato] = useState([]);
   const campeonatoSelecionado = campeonatos.find((c) => c._id === id);
   const fases = campeonatoSelecionado?.fases || [];
 
@@ -17,12 +18,29 @@ const Campeonato = () => {
     setFaseAtual(0);
   }, [id]);
 
-  // Filtra os jogos do campeonato atual e da fase atual
+  /*// Filtra os jogos do campeonato atual e da fase atual
   const jogosCampeonato = jogos?.filter(
     (jogo) =>
       jogo.campeonato === campeonatoSelecionado?.nome &&
       jogo.fase === fases[faseAtual],
-  ) || [];
+  ) || [];*/
+
+  useEffect(() => {
+    async function carregarJogos(){
+      if(!campeonatoSelecionado) return;
+
+      const fase = fases[faseAtual];
+
+      const data = await getJogosPorFase(
+        campeonatoSelecionado.nome,
+        fase
+      );
+
+      setJogosCampeonato(data);
+    }
+
+    carregarJogos();
+  }, [campeonatoSelecionado, faseAtual]);
 
   // Evita renderizar antes do campeonato ser definido
   if (!campeonatoSelecionado) {

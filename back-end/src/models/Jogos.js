@@ -6,6 +6,7 @@ const jogoSchema = new mongoose.Schema({
   fase: {type: String},
   dataJogo: {type: String},
   horaJogo: {type: String},
+  data: {type: Date},
   mandante: {
     nome: {type: String},
     escudo: {type: String}

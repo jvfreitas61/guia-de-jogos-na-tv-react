@@ -6,13 +6,29 @@ import Screen from '../Assets/screen.svg'
 const Jogo = ({
   logoCampeonato = '',
   campeonato = '',
-  dataJogo = '', 
-  horaJogo = '',
+  data = '',
   mandante = [],
   visitante = [],
   transmissao = [],
   }) => {
+  
+    function formatarDataHora(data){
+
+      const dia = String(data.getDate()).padStart(2, "0");
+      const mes = String(data.getMonth() + 1).padStart(2, "0");
+      const ano = data.getFullYear();
+
+      const hora = String(data.getHours()).padStart(2, "0");
+      const minutos = String(data.getMinutes()).padStart(2, "0");
+
+      return{
+        dataJogo: `${dia}/${mes}/${ano}`,
+        horaJogo: `${hora}:${minutos}`
+      };
+    }
     
+    const {dataJogo, horaJogo} = formatarDataHora(new Date(data));
+
   return (
     <div className={styles.jogo}>
       <div className={styles.jogoHeader}>

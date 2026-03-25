@@ -2,11 +2,12 @@ import React, { useState, useEffect, useContext } from 'react';
 import ListaJogos from '../Components/ListaJogos';
 import GuiaJogos from '../Components/GuiaJogos';
 import { DataContext } from "../context/DataContext";
+import { getJogosHoje, getJogosAmanha } from '../../api/api';
 
 const Home = () => {
   const dias = ['Hoje', 'Amanhã'];
   const [diaAtual, setDiaAtual] = useState(0);
-  const { jogos } = useContext(DataContext);
+  /*const { jogos } = useContext(DataContext);
 
   // Função que retorna a data no formato dd/mm/yyyy (usado no JSON)
   const getData = (offset = 0) => {
@@ -33,6 +34,41 @@ const Home = () => {
 
   // Filtra os jogos pela data selecionada
   const jogosFiltrados = jogos?.filter((jogo) => jogo.dataJogo === dataSelecionada) || [];
+*/
+
+const [jogosHoje, setJogosHoje] = useState([]);
+const [jogosAmanha, setJogosAmanha] = useState([]);
+
+useEffect(() => {
+
+  async function carregarJogos(){
+
+    const hoje = await getJogosHoje();
+    console.log(hoje);
+    const amanha = await getJogosAmanha();
+    console.log(amanha);
+
+    setJogosHoje(hoje);
+    setJogosAmanha(amanha);
+
+  }
+
+  carregarJogos();
+
+}, []);
+
+// Define qual lista mostrar
+  const jogosExibidos = diaAtual === 0 ? jogosHoje : jogosAmanha;
+
+  // Data bonita (opcional)
+  const data = new Date();
+  data.setDate(data.getDate() + diaAtual);
+
+  const dataFormatada = data.toLocaleDateString("pt-BR", {
+    day: "numeric",
+    month: "long",
+    year: "numeric"
+  });
 
   return (
     <>
@@ -47,7 +83,7 @@ const Home = () => {
           tituloCustom={`${dias[diaAtual]}, ${dataFormatada}`} 
         />
         
-        <ListaJogos itemsArray={jogosFiltrados} type="home" />
+        <ListaJogos itemsArray={jogosExibidos} type="home" />
       </section>
     </>
   );
