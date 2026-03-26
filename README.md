@@ -1,12 +1,81 @@
-# React + Vite
+# Guia de Jogos na TV
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+O **Guia de Jogos na TV** é uma aplicação web desenvolvida para exibir de forma organizada os jogos esportivos disponíveis na televisão, permitindo ao usuário visualizar partidas por data, campeonato e fase.
 
-Currently, two official plugins are available:
+O objetivo principal é facilitar a consulta rápida de jogos, oferecendo uma interface simples, intuitiva e responsiva.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+# Demonstração
 
-## Expanding the ESLint configuration
+https://guia-de-jogos-na-tv-react.vercel.app/
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+# Preview da Aplicação
+
+
+
+# Funcionalidades
+
+- Visualização de jogos do dia: ("hoje" e "amanhã")
+- Ordenação automática por horário
+- Exibição de canais de transmissão
+- Filtro por campeonato
+- Filtro por fase ou rodada
+- Interface responsiva
+
+# Tecnologias Utilizadas
+
+## Frontend
+
+* React + Vite
+* React Router
+* Context API
+* Axios
+* CSS Modules
+
+## Backend
+
+* Node.js
+* Express
+* MongoDB
+* Mongoose
+
+# Como Rodar o Projeto
+
+### 1️⃣ Clonar o repositório
+
+git clone https://github.com/jvfreitas61/guia-de-jogos-na-tv-react.git
+
+### 2️⃣ Backend
+
+cd backend
+npm install
+
+Rodar servidor:
+npm run dev
+
+### 3️⃣ Frontend
+
+cd frontend
+npm install
+npm run dev
+
+# Melhorias Futuras
+
+Algumas melhorias que podem ser implementadas:
+
+- Busca por time
+- Favoritar jogos
+- Notificações de jogos
+- Integração com APIs externas
+- Estatísticas de partidas
+
+# Autor
+
+Desenvolvido por João Victor de Freitas
+
+GitHub: https://github.com/jvfreitas61
+
+LinkedIn: https://www.linkedin.com/in/jvfreitas61/
+
+# Licença
+
+Este projeto está sob a licença MIT.
