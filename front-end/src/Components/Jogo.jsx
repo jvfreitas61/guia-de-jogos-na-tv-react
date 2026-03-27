@@ -48,8 +48,8 @@ const Jogo = ({
           </div>
         </div>
         <div className={styles.agendaJogo}>
-          <p>{dataJogo}</p>
-          <p>{horaJogo}</p>
+          <p>{data?dataJogo:"A DEFINIR"}</p>
+          <p>{data?horaJogo:""}</p>
         </div>
       </div>
       <div className={styles.transmissao}>
