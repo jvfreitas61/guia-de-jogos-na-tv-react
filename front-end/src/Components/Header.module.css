@@ -77,6 +77,13 @@ menu{
   color: var(--laranja);
 }
 
+.link{
+  margin: 0px 10px;
+  color: var(--azul-marinho);
+  cursor: pointer;
+  display: block;
+}
+
 .link:hover{
   /*text-shadow: 1px 1px 20px var(--azul-marinho);*/
   color: var(--laranja);
@@ -90,12 +97,14 @@ h1{
 }
 
 .nav{
+  display: flex;
+  justify-content: center;
   margin: auto;
   text-align: center;
   font-size: 1rem;
   padding: 10px;
   background-color: rgb(235, 235, 235);
-  /*box-shadow: 1px 5px 5px #151515;*/
+  /*box-shadow: 1px 5px 5px lightgray;*/
 }
 
 .navMobile{
@@ -118,8 +127,9 @@ h1{
 }
 
 a{
-  margin: 0px 10px;
+  /*margin: 0px 10px;*/
   color: var(--azul-marinho);
+  white-space: nowrap;
 }
 
 /*@media (max-width: 800px){
@@ -131,3 +141,50 @@ a{
   }
 }*/
 
+.dropdown{
+  position: relative;
+}
+
+.dropdownButton{
+cursor: pointer;
+color: var(--azul-marinho);
+margin: 0 10px;
+}
+
+.dropdownMob{
+  position: relative;
+  background-color: rgb(255, 255, 255);
+  top: 100%;
+  padding: 0px 10px;
+  width: 100%;
+  opacity: 1;
+}
+
+.dropdownMenu{
+  position: absolute;
+  background-color: rgb(235, 235, 235);
+  border: 1px solid lightgray;
+  top: 100%;
+  padding: 0px 10px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: 0.2s ease;
+}
+
+.dropdown:hover .dropdownMenu{
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.dropdownMenu a {
+  margin: 10px;
+}
+
+@media (max-width: 980px){
+  .dropdownButton{
+    display: none;
+  }
+
+}
