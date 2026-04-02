@@ -22,8 +22,8 @@ const Header = () => {
   }
 
   const dropdowns = [
-    {titulo: "Campeonatos", tipo: "liga"},
-    {titulo: "Copas", tipo: "copa"},
+    {titulo: "Ligas Nacionais", tipo: "liga"},
+    {titulo: "Copas Nacionais", tipo: "copa"},
     {titulo: "Competições Internacionais", tipo: "internacional"},
   ]
 

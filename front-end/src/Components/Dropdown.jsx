@@ -9,6 +9,7 @@ const Dropdown = ({titulo, tipo, campeonatos, mobile}) => {
       <div className={mobile ? styles.dropdownMob : styles.dropdownMenu}>
         {campeonatos
           ?.filter((campeonato) => campeonato.tipo === tipo)
+          .sort((a,b) => a.nome.localeCompare(b.nome))
           .map((campeonato) => (
             <NavLink
               to={`/campeonato/${campeonato._id}`}
